@@ -15,11 +15,11 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a first name' do
-      pending
+      @driver.set_first_name_field("Marty")
     end
 
     it 'should accept a last name' do
-      pending
+      @driver.set_last_name_field("McFly").first_name_field_displayed
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do

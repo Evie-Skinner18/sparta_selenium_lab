@@ -41,18 +41,20 @@ class SeleniumDemoReg
   # first name field management - Difficulty Easy
 
   def set_first_name_field(first_name)
-    @chrome_driver
+    @chrome_driver.find_element(:id, FIRST_NAME_FIELD).send_keys(first_name)
   end
 
-  def get_first_name_field_value
+  def get_first_name_field_value(first_name)
   end
 
   def first_name_field_displayed
+    puts "#{first_name}"
   end
 
   # last name field management - Difficulty Easy
 
   def set_last_name_field(last_name)
+    @chrome_driver.find_element(:id, LAST_NAME_FIELD).send_keys(last_name)
   end
 
   def get_last_name_field_value
