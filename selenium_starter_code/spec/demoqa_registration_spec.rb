@@ -16,10 +16,11 @@ describe 'testing the demoqa registration page' do
 
     it 'should accept a first name' do
       @driver.set_first_name_field("Marty")
+      # expect(@driver.get_first_name_field_value).to eq(first_name)
     end
 
     it 'should accept a last name' do
-      @driver.set_last_name_field("McFly").first_name_field_displayed
+      @driver.set_last_name_field("McFly")
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do
