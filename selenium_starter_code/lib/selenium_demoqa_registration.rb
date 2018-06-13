@@ -1,3 +1,4 @@
+
 require 'selenium-webdriver'
 
 class SeleniumDemoReg
@@ -5,8 +6,8 @@ class SeleniumDemoReg
   # page_url
   PAGE_URL = 'http://demoqa.com/registration/'
   # Page field
-  FIRST_NAME_FIELD =  # id
-  LAST_NAME_FIELD =  # id
+  FIRST_NAME_FIELD =  'name_3_firstname'
+  LAST_NAME_FIELD =  'name_3_lastname'
   MARITAL_STATUS =  # id
   HOBBY_STATUS =  # values
   COUNTRY_DROP_DOWN_LIST =  # id
@@ -26,6 +27,7 @@ class SeleniumDemoReg
   def initialize
     # set up driver
     @chrome_driver = Selenium::WebDriver.for :chrome
+
   end
 
   def access_registration_form
@@ -39,6 +41,7 @@ class SeleniumDemoReg
   # first name field management - Difficulty Easy
 
   def set_first_name_field(first_name)
+    @chrome_driver
   end
 
   def get_first_name_field_value
@@ -156,3 +159,5 @@ class SeleniumDemoReg
   def check_registration_successful
   end
 end
+
+sleep 10

@@ -5,6 +5,7 @@ describe 'testing the demoqa registration page' do
   before(:all) do
     @driver = SeleniumDemoReg.new
     @driver.access_registration_form
+    #at first hard code the inputs and then try to generate e.g a random number to test different radio buttons/drop down options etc.
   end
 
   context 'positive paths for the registration form and register' do
