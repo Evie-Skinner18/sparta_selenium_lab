@@ -52,7 +52,7 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a username' do
-      @driver.set_user_name_field
+      @driver.set_user_name_field("MrRock'n'Roll")
     end
 
     it 'should accept a about yourself text' do
