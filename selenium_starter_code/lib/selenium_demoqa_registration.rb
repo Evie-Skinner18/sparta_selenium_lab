@@ -8,14 +8,14 @@ class SeleniumDemoReg
   # Page field
   FIRST_NAME_FIELD =  'name_3_firstname'
   LAST_NAME_FIELD =  'name_3_lastname'
-  MARITAL_STATUS =  # id
-  HOBBY_STATUS =  # values
-  COUNTRY_DROP_DOWN_LIST =  # id
-  DOB_MONTH_DROPDOWN_LIST =  # id
-  DOB_DAY_DROPDOWN_LIST =  # id
-  DOB_YEAR_DROPDOWN_LIST =  # id
-  PHONE_NUMBER_FIELDS =  # id
-  USERNAME_FIELD =  # id
+  MARITAL_STATUS =  'radio_4[]'
+  HOBBY_STATUS =  "checkbox_5[]"
+  COUNTRY_DROP_DOWN_LIST =  'dropdown_7'
+  DOB_MONTH_DROPDOWN_LIST =  'mm_date_8'
+  DOB_DAY_DROPDOWN_LIST =  'dd_date_8'
+  DOB_YEAR_DROPDOWN_LIST =  'yy_date_8'
+  PHONE_NUMBER_FIELDS =  'phone_9'
+  USERNAME_FIELD =  'username'
   EMAIL_FIELD =  # id
   PROFILE_PICTURE_BUTTON =  # id
   DESCRIPTION_FIELD =  # id
@@ -46,7 +46,7 @@ class SeleniumDemoReg
   end
 
   def get_first_name_field_value
-    @first_name_value = FIRST_NAME_FIELD.text
+    @first_name_value = @chrome_driver.find_element(:id, FIRST_NAME_FIELD)['value']
   end
 
   def first_name_field_displayed
@@ -60,7 +60,7 @@ class SeleniumDemoReg
   end
 
   def get_last_name_field_value
-    @last_name_value = LAST_NAME_FIELD.text
+    @last_name_value = @chrome_driver.find_element(:id, LAST_NAME_FIELD)['value']
   end
 
   def last_name_field_displayed
@@ -70,12 +70,14 @@ class SeleniumDemoReg
 
   def select_marital_option(marital_status)
     # Consider something like a case statement and check the selenium selected? method
+    @marital_option = @chrome_driver.find_element(:name, MARITAL_STATUS.gsub(" ", "#{marital_status}")).click
   end
 
   # hobby option management - Difficulty Medium
 
   def select_hobby_option(hobby)
     # Consider something like a case statement and check the selenium selected? method
+    @hobby  = @chrome_driver.find_element(:name, HOBBY_STATUS.gsub(" ", "#{hobby}")).click
 
   end
 
@@ -86,9 +88,16 @@ class SeleniumDemoReg
   # If no solution then a run through will happen once finished
 
   def get_selected_country
+    @dropdown_list = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)
+    @options = @dropdown_list.find_elements(tag_name: 'option')
+    @options[0].selected?
+    p @options[0]['value']
   end
 
   def country_dropdown_list_select(country)
+    @dropdown_list = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)
+    @options = @dropdown_list.find_elements(tag_name: 'option')
+    @options.each {|option| option.click if option.text == "#{country}"}
   end
 
   # DOB management - Difficulty HARD
@@ -98,29 +107,38 @@ class SeleniumDemoReg
   # If no solution then a run through will happen once finished
 
   def dob_month_list_select(month_value)
-
+    @month_dropdown_list = @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST)
+    @options = @month_dropdown_list.find_elements(tag_name: 'option')
+    @options.each {|option| option.click if option.text == "#{month_value}"}
   end
 
   def dob_day_list_select(day_value)
-
+    @day_dropdown_list = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)
+    @options = @day_dropdown_list.find_elements(tag_name: 'option')
+    @options.each {|option| option.click if option.text == "#{day_value}"}
   end
 
   def dob_year_list_select(year_value)
-
+    @year_dropdown_list = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)
+    @options = @year_dropdown_list.find_elements(tag_name: 'option')
+    @options.each {|option| option.click if option.text == "#{year_value}"}
   end
-
 
   # Phone number field management - Difficulty Easy
 
   def set_phone_number_field(phone_number)
+    @chrome_driver.find_element(:id, PHONE_NUMBER_FIELDS).send_keys(phone_number)
   end
 
   def get_phone_number_field_value
+    @phone_number_value = @chrome_driver.find_element(:id, PHONE_NUMBER_FIELDS)['value']
+
   end
 
   #  username field management - Difficulty Easy
 
   def set_user_name_field(user_name)
+    @chrome_driver.find_element(:id, USERNAME_FIELD).send_keys(user_name)
   end
 
   def get_user_name_field_value
@@ -165,4 +183,4 @@ class SeleniumDemoReg
   end
 end
 
-sleep 10
+sleep 15

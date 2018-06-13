@@ -15,36 +15,40 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a first name' do
-      @driver.set_first_name_field("Marty")
-      # expect(@driver.get_first_name_field_value).to eq(first_name)
+      first_name = @driver.set_first_name_field("Marty")
+      expect(@driver.get_first_name_field_value).to eq(first_name)
     end
 
     it 'should accept a last name' do
-      @driver.set_last_name_field("McFly")
+      last_name = @driver.set_last_name_field("McFly")
+      expect(@driver.get_last_name_field_value).to eq(last_name)
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do
-      pending
+      @driver.select_marital_option(1)
     end
 
     it 'should accept a hobby status selection of Dance, Reading, or Cricket' do
-      pending
+      @driver.select_hobby_option(0)
     end
 
-    it 'should have a country default of Afhghanistan' do
-      pending
+    it 'should have a country default of Afghanistan' do
+      @driver.get_selected_country
+    end
+
+    #I added another test for the drop down list
+    it 'should have a drop-down list of countries for the user to click' do
+      @driver.country_dropdown_list_select("Lebanon")
     end
 
     it 'accept a new DOB' do
-      pending
-    end
-
-    it 'should accept a new country value' do
-      pending
+      @driver.dob_month_list_select(6)
+      @driver.dob_day_list_select(13)
+      @driver.dob_year_list_select(1993)
     end
 
     it 'should accept a valid phone number' do
-      pending
+      @driver.set_phone_number_field("07784521996")
     end
 
     it 'should accept a username' do
