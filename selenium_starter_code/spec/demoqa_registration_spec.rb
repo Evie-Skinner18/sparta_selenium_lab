@@ -55,8 +55,16 @@ describe 'testing the demoqa registration page' do
       @driver.set_user_name_field("MrRock'n'Roll")
     end
 
+    it 'should accept an email address' do
+      email = @driver.set_email_field("martymcfly@hotmail.co.uk")
+    end
+
     it 'should accept a about yourself text' do
-      pending
+      @driver.set_about_yourself_field("Hello world!")
+    end
+
+    it 'should accept a profile picture'
+
     end
 
     it 'should accept a password' do
@@ -66,7 +74,4 @@ describe 'testing the demoqa registration page' do
     it 'should accept a password confirmation' do
       pending
     end
-
   end
-
-end

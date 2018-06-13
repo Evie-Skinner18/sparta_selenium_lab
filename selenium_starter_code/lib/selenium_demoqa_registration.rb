@@ -16,8 +16,8 @@ class SeleniumDemoReg
   DOB_YEAR_DROPDOWN_LIST =  'yy_date_8'
   PHONE_NUMBER_FIELDS =  'phone_9'
   USERNAME_FIELD =  'username'
-  EMAIL_FIELD =  # id
-  PROFILE_PICTURE_BUTTON =  # id
+  EMAIL_FIELD =  'email_1'
+  PROFILE_PICTURE_BUTTON =  'profile_pic_10'
   DESCRIPTION_FIELD =  # id
   PASSWORD_FIELD = # id
   CONFIRM_PASSWORD_FIELD =  # id
@@ -147,14 +147,20 @@ class SeleniumDemoReg
   # Email field management - Difficulty Easy
 
   def set_email_field(email)
+    @chrome_driver.find_element(:id, EMAIL_FIELD).send_keys(email)
   end
 
   def get_email_field_value
   end
 
+  #profile pic
+  def set_profile_pic
+
+  end
   # about yourself / description field - Difficulty Easy
 
   def set_about_yourself_field(details)
+    @chrome_driver.find_element(:id, USERNAME_FIELD).send_keys(details)
   end
 
   def get_about_yourself_value
