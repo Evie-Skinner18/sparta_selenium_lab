@@ -1,6 +1,6 @@
 
 require 'selenium-webdriver'
-require_relative '../generator/random_generator.rb'
+require_relative '../generator/generator.rb'
 
 class SeleniumDemoReg
 
@@ -30,7 +30,7 @@ class SeleniumDemoReg
     @chrome_driver = Selenium::WebDriver.for :chrome
 
     #set up random generator
-    @random_data = RandomGenerator.new
+    @random_data = RandomFormValues.new
 
   end
 
@@ -44,7 +44,7 @@ class SeleniumDemoReg
 
   # first name field management - Difficulty Easy
 
-  def set_first_name_field(first_name)
+  def set_first_name_field
     first_name = @random_data.generate_first_name
     @chrome_driver.find_element(:id, FIRST_NAME_FIELD).send_keys(first_name)
     p "#{first_name}"
