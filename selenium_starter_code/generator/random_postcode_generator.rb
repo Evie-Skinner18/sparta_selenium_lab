@@ -19,5 +19,3 @@ class RandomPostcodeGenerator
 
 
 end #end of class
-random_postcode = RandomPostcodeGenerator.new
-p random_postcode.generate_random_postcode

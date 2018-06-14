@@ -47,7 +47,6 @@ class SeleniumDemoReg
   def set_first_name_field
     first_name = @random_data.generate_first_name
     @chrome_driver.find_element(:id, FIRST_NAME_FIELD).send_keys(first_name)
-    p "#{first_name}"
   end
 
   def get_first_name_field_value
@@ -60,8 +59,8 @@ class SeleniumDemoReg
   # last name field management - Difficulty Easy
 
   def set_last_name_field(last_name)
+    last_name = @random_data.generate_last_name
     @chrome_driver.find_element(:id, LAST_NAME_FIELD).send_keys(last_name)
-    p "#{last_name}"
   end
 
   def get_last_name_field_value
@@ -192,5 +191,3 @@ class SeleniumDemoReg
     @chrome_driver.find_element(:class, REGISTRATION_CONFIRMATION).displayed?
   end
 end
-
-sleep 35
