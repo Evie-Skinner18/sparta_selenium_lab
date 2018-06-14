@@ -63,15 +63,25 @@ describe 'testing the demoqa registration page' do
       @driver.set_about_yourself_field("Hello world!")
     end
 
-    it 'should accept a profile picture'
+    it 'should accept a profile picture' do
 
     end
 
     it 'should accept a password' do
-      pending
+      @password = "Ilovetimetravel123"
+      @driver.set_password_field(@password)
     end
 
     it 'should accept a password confirmation' do
-      pending
+      @driver.set_confirmation_password_field(@password)
+    end
+
+    it 'should submit the form' do
+      @driver.click_submit
+    end
+
+    it 'should check that the user has successfully registered' do
+
     end
   end
+end

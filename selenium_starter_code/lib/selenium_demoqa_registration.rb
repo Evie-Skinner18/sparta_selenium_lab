@@ -18,9 +18,9 @@ class SeleniumDemoReg
   USERNAME_FIELD =  'username'
   EMAIL_FIELD =  'email_1'
   PROFILE_PICTURE_BUTTON =  'profile_pic_10'
-  DESCRIPTION_FIELD =  # id
-  PASSWORD_FIELD = # id
-  CONFIRM_PASSWORD_FIELD =  # id
+  DESCRIPTION_FIELD =  'description'
+  PASSWORD_FIELD = 'password_2'
+  CONFIRM_PASSWORD_FIELD = 'confirm_password_password_2'
   SUBMIT_BUTTON = # name
   REGISTRATION_CONFIRMATION = #class
 
@@ -95,9 +95,7 @@ class SeleniumDemoReg
   end
 
   def country_dropdown_list_select(country)
-    @dropdown_list = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST)
-    @options = @dropdown_list.find_elements(tag_name: 'option')
-    @options.each {|option| option.click if option.text == "#{country}"}
+    @dropdown_list = @chrome_driver.find_element(:id, COUNTRY_DROP_DOWN_LIST).send_keys(country)
   end
 
   # DOB management - Difficulty HARD
@@ -107,21 +105,15 @@ class SeleniumDemoReg
   # If no solution then a run through will happen once finished
 
   def dob_month_list_select(month_value)
-    @month_dropdown_list = @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST)
-    @options = @month_dropdown_list.find_elements(tag_name: 'option')
-    @options.each {|option| option.click if option.text == "#{month_value}"}
+    @month_dropdown_list = @chrome_driver.find_element(:id, DOB_MONTH_DROPDOWN_LIST).send_keys(month_value)
   end
 
   def dob_day_list_select(day_value)
-    @day_dropdown_list = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST)
-    @options = @day_dropdown_list.find_elements(tag_name: 'option')
-    @options.each {|option| option.click if option.text == "#{day_value}"}
+    @day_dropdown_list = @chrome_driver.find_element(:id, DOB_DAY_DROPDOWN_LIST).send_keys(day_value)
   end
 
   def dob_year_list_select(year_value)
-    @year_dropdown_list = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST)
-    @options = @year_dropdown_list.find_elements(tag_name: 'option')
-    @options.each {|option| option.click if option.text == "#{year_value}"}
+    @year_dropdown_list = @chrome_driver.find_element(:id, DOB_YEAR_DROPDOWN_LIST).send_keys(year_value)
   end
 
   # Phone number field management - Difficulty Easy
@@ -132,7 +124,6 @@ class SeleniumDemoReg
 
   def get_phone_number_field_value
     @phone_number_value = @chrome_driver.find_element(:id, PHONE_NUMBER_FIELDS)['value']
-
   end
 
   #  username field management - Difficulty Easy
@@ -160,7 +151,7 @@ class SeleniumDemoReg
   # about yourself / description field - Difficulty Easy
 
   def set_about_yourself_field(details)
-    @chrome_driver.find_element(:id, USERNAME_FIELD).send_keys(details)
+    @chrome_driver.find_element(:id, DESCRIPTION_FIELD).send_keys(details)
   end
 
   def get_about_yourself_value
@@ -169,20 +160,24 @@ class SeleniumDemoReg
   # Password management - Difficulty Easy
 
   def set_password_field(password)
+    @chrome_driver.find_element(:id, PASSWORD_FIELD).send_keys(password)
   end
 
   def get_password_value
   end
 
   def set_confirmation_password_field(password)
+    @chrome_driver.find_element(:id, CONFIRM_PASSWORD_FIELD).send_keys(password)
   end
 
   def get_confirmation_password_value
+    @confirmation_value = @chrome_driver.find_element(:id, CONFIRM_PASSWORD_FIELD)['value']
   end
 
   # registration confirmation - Difficulty Easy
 
   def click_submit
+    @chrome_driver.find_element(:id, CONFIRM_PASSWORD_FIELD).submit
   end
 
   def check_registration_successful
