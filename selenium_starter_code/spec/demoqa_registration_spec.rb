@@ -64,7 +64,7 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a profile picture' do
-
+      @driver.set_profile_pic('marty.jpg')
     end
 
     it 'should accept a password' do
@@ -81,7 +81,7 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should check that the user has successfully registered' do
-      #driver.find_element(:id,'Element').displayed?
+      @driver.check_registration_successful
     end
   end
 end

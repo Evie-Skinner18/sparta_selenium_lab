@@ -21,8 +21,8 @@ class SeleniumDemoReg
   DESCRIPTION_FIELD =  'description'
   PASSWORD_FIELD = 'password_2'
   CONFIRM_PASSWORD_FIELD = 'confirm_password_password_2'
-  SUBMIT_BUTTON = # name
-  REGISTRATION_CONFIRMATION = #class
+  SUBMIT_BUTTON = 'pie_submit'
+  REGISTRATION_CONFIRMATION = 'piereg_message'
 
   def initialize
     # set up driver
@@ -145,8 +145,11 @@ class SeleniumDemoReg
   end
 
   #profile pic
-  def set_profile_pic
-    @chrome_driver.find_element(:id, PROFILE_PICTURE_BUTTON).send_keys()
+  def set_profile_pic(file)
+    file_name = File.join(Dir.pwd, file)
+    @profile_pic = @chrome_driver.find_element(:id, PROFILE_PICTURE_BUTTON)
+    @profile_pic.send_keys(file_name)
+    @profile_button = @profile_pic.click
   end
   # about yourself / description field - Difficulty Easy
 
@@ -177,11 +180,12 @@ class SeleniumDemoReg
   # registration confirmation - Difficulty Easy
 
   def click_submit
-    @chrome_driver.find_element(:id, CONFIRM_PASSWORD_FIELD).submit
+    @chrome_driver.find_element(:name, SUBMIT_BUTTON).submit
   end
 
   def check_registration_successful
+    @chrome_driver.find_element(:class, REGISTRATION_CONFIRMATION).displayed?
   end
 end
 
-sleep 15
+sleep 35
