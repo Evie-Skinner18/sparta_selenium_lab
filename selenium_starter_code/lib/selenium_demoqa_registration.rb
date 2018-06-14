@@ -146,7 +146,7 @@ class SeleniumDemoReg
 
   #profile pic
   def set_profile_pic
-
+    @chrome_driver.find_element(:id, PROFILE_PICTURE_BUTTON).send_keys()
   end
   # about yourself / description field - Difficulty Easy
 

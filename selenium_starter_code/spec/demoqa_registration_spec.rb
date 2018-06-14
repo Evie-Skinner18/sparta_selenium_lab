@@ -81,7 +81,7 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should check that the user has successfully registered' do
-
+      #driver.find_element(:id,'Element').displayed?
     end
   end
 end
