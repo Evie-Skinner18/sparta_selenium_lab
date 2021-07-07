@@ -1,0 +1,8 @@
+
+USER INTERFACE/USER ACCEPTANCE TESTING
+
+SELENIUM
+Has a web driver behind the scenes allowing us to drive different browsers and out user input on there. Mimic user actions/requirements/journeys.
+We are taking a user jouney and automating it. You can use Selenium with Ruby, Python, C#, Java, etc. So if you learn it in Ruby
+and then move to a different company, you can just learn the syntax for running it in e.g Java. Selenium is a web tesitng API so we are
+interacting with that API to test things. There's a webdriver part to the Ruby docs
